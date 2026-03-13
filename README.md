@@ -1,6 +1,6 @@
 # 🧬 TCGA Pan-Cancer Visualizer
 
-A containerized, end-to-end bioinformatics pipeline designed to download, normalize, and visualize RNA-seq expression data from the Genomic Data Commons (GDC). This tool automates the processing of over 10,000 samples across 33 TCGA projects (plus NCICCR-DLBCL), generating publication-ready Pan-Cancer expression boxplots.
+A containerized, end-to-end bioinformatics pipeline designed to download, normalize, and visualize RNA-seq expression data from the Genomic Data Commons (GDC). This tool automates the ingestion of all 33 TCGA projects and dynamically filters the dataset to generate publication-ready, statistically backed Pan-Cancer expression boxplots for the 24 cohorts that contain both normal and tumor tissue controls.
 
 **Example Output: ESR1 (Estrogen Receptor 1) Expression Across TCGA Cohorts**
 ![ESR1 Pan-Cancer Expression](examples/ESR1.tumor_vs_normal.png)
@@ -44,7 +44,7 @@ mkdir ~/tcga_data
 Clone this repository, navigate into it, and build the Docker image:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/tcga-pan-cancer-visualizer.git
+git clone https://github.com/yigewu/tcga-pan-cancer-visualizer.git
 cd tcga-pan-cancer-visualizer
 docker build -t tcga-tool .
 
@@ -81,7 +81,7 @@ docker logs -f tcga_pipeline
 
 ```
 
-## Generating Plots
+## 📊 Generating Plots
 
 Once the pipeline finishes and the `CPM.log2.RDS` file is generated, you can create "Tumor vs. Normal" boxplots for your genes of interest.
 

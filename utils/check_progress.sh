@@ -64,11 +64,7 @@ echo "------------------------------------------"
 
 if [ "$INCOMPLETE" -gt 0 ] || [ "$NOT_STARTED" -gt 0 ]; then
     echo "⚠️  ACTION REQUIRED: Some projects are missing data."
-    echo "   Please re-run the download script: docker run ... Rscript /app/scripts/01_download_data.R"
-    echo "   NOTE: The gdc-client will securely verify existing files before resuming."
-    echo "   This verification can take 10-20 minutes, but it prevents duplicate downloads."
-    echo "   DO NOT proceed to step 02 (Normalization) until all projects show [✓] Complete."
 else
-    echo "✅ All downloads complete! You are cleared to run 02_normalize_data.R"
+    echo "✅ All downloads complete!"
 fi
 echo "------------------------------------------"
