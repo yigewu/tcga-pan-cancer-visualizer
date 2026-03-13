@@ -1,0 +1,13 @@
+# Ignore the massive data directory
+tcga_data/
+data/
+figures/
+
+# Ignore the large RDS objects
+*.RDS
+*.rds
+
+# Ignore local logs and temporary files
+*.log
+.DS_Store
+.git/
