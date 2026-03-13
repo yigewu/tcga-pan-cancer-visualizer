@@ -1,10 +1,25 @@
-Here is the finalized `README.md` perfectly structured for a professional GitHub repository. It clearly separates the "How-To" from the "Why," explicitly warns users about the data directory trap to save them from Docker crashes, and includes all the command examples you requested.
-
----
-
 # 🧬 TCGA Pan-Cancer Visualizer
 
 A containerized, end-to-end bioinformatics pipeline designed to download, normalize, and visualize RNA-seq expression data from the Genomic Data Commons (GDC). This tool automates the processing of over 10,000 samples across 33 TCGA projects (plus NCICCR-DLBCL), generating publication-ready Pan-Cancer expression boxplots.
+
+**Example Output: ESR1 (Estrogen Receptor 1) Expression Across TCGA Cohorts**
+![ESR1 Pan-Cancer Expression](examples/ESR1.tumor_vs_normal.png)
+
+## 🏗  Repository Structure
+
+```text
+tcga-pan-cancer-visualizer/
+├── Dockerfile              # Container definition (Bioconductor-based)
+├── .dockerignore           # Prevents large files from breaking the Docker build
+├── scripts/
+│   ├── prepare_tcga_data.R # Orchestrates download, merge, and TMM normalization
+│   └── plot_tcga_gene.R    # Generates statistical boxplots with significance levels
+├── utils/
+│   ├── batch_plot.sh       # Automation wrapper for multiple genes
+│   └── check_progress.sh   # Monitoring tool for long-running downloads
+└── examples/               # Example outputs (e.g., ESR1 validation plot)
+
+```
 
 ## 🚀 Getting Started
 
@@ -66,7 +81,7 @@ docker logs -f tcga_pipeline
 
 ```
 
-## 📊 Generating Plots
+## Generating Plots
 
 Once the pipeline finishes and the `CPM.log2.RDS` file is generated, you can create "Tumor vs. Normal" boxplots for your genes of interest.
 
@@ -95,23 +110,6 @@ To automatically generate plots for multiple genes, edit the `HOST_DATA_PATH` an
 ./utils/batch_plot.sh
 
 ```
-
-## 🏗 Repository Structure
-
-```text
-tcga-pan-cancer-visualizer/
-├── Dockerfile              # Container definition (Bioconductor-based)
-├── .dockerignore           # Prevents large files from breaking the Docker build
-├── scripts/
-│   ├── prepare_tcga_data.R # Orchestrates download, merge, and TMM normalization
-│   └── plot_tcga_gene.R    # Generates statistical boxplots with significance levels
-├── utils/
-│   ├── batch_plot.sh       # Automation wrapper for multiple genes
-│   └── check_progress.sh   # Monitoring tool for long-running downloads
-└── examples/               # Example outputs (e.g., ESR1 validation plot)
-
-```
-
 ## 🧠 Design Rationale
 
 ### Why TMM Normalization?
